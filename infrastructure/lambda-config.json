@@ -1,0 +1,16 @@
+{
+  "FunctionName": "smart-attendance",
+  "PackageType": "Image",
+  "MemorySize": 3008,
+  "Timeout": 30,
+  "Description": "Serverless orchestrator & FaceNet ML inference engine for Smart Attendance System",
+  "Environment": {
+    "Variables": {
+      "MONGODB_URI": "YOUR_MONGODB_ATLAS_URI_HERE",
+      "DATABASE_NAME": "smart_attendance",
+      "RECOGNITION_THRESHOLD": "0.65",
+      "MODEL_VERSION": "v1.0",
+      "LOG_LEVEL": "INFO"
+    }
+  }
+}

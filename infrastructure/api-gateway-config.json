@@ -1,0 +1,33 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Smart Attendance API Gateway",
+    "description": "HTTP API proxying requests to the Smart Attendance AWS Lambda container.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/{proxy+}": {
+      "x-amazon-apigateway-any-method": {
+        "x-amazon-apigateway-integration": {
+          "type": "aws_proxy",
+          "httpMethod": "POST",
+          "uri": "arn:aws:apigateway:${AWS_REGION}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS_REGION}:${AWS_ACCOUNT_ID}:function:smart-attendance/invocations",
+          "payloadFormatVersion": "2.0"
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "x-amazon-apigateway-integration": {
+          "type": "aws_proxy",
+          "httpMethod": "POST",
+          "uri": "arn:aws:apigateway:${AWS_REGION}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS_REGION}:${AWS_ACCOUNT_ID}:function:smart-attendance/invocations",
+          "payloadFormatVersion": "2.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {}
+  }
+}

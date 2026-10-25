@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.env
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+
+# ML
+ml/artifacts/*.pt
+ml/artifacts/*.pth
+!ml/artifacts/.gitkeep
+
+# Logs
+*.log
+
+# AWS Lambda
+lambda/*.zip

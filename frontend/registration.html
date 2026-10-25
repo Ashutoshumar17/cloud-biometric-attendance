@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - Smart Attendance</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav">
+            <div class="nav-brand">
+                <span>🎓</span> Smart Attendance
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="registration.html" style="color: var(--primary);">Registration</a>
+                <a href="attendance.html">Attendance</a>
+                <a href="dashboard.html">Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Student Registration</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Register a new student and capture their face samples.</p>
+
+        <div class="grid grid-2">
+            <!-- Left: Form -->
+            <div class="card">
+                <h3>Student Information</h3>
+                <form id="registrationForm" style="margin-top: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label" for="studentId">Student ID</label>
+                        <input type="text" id="studentId" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="studentName">Name</label>
+                        <input type="text" id="studentName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="department">Department</label>
+                        <select id="department" class="form-select">
+                            <option value="CSE">CSE</option>
+                            <option value="ECE">ECE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="MECH">MECH</option>
+                            <option value="CIVIL">CIVIL</option>
+                            <option value="IT">IT</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="semester">Semester</label>
+                        <select id="semester" class="form-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="section">Section</label>
+                        <select id="section" class="form-select">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" class="form-input">
+                    </div>
+                    <button type="button" id="btnRegister" class="btn btn-primary" style="width: 100%;">Register Student</button>
+                </form>
+            </div>
+
+            <!-- Right: Camera -->
+            <div class="card">
+                <h3>Face Capture</h3>
+                <div style="margin-top: 1rem;">
+                    <div class="webcam-container">
+                        <video id="webcamVideo" autoplay playsinline></video>
+                    </div>
+                    
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button id="btnStartCamera" class="btn btn-secondary" style="flex: 1;">Start Camera</button>
+                        <button id="btnCaptureSample" class="btn btn-primary" style="flex: 2;" disabled>Capture Sample</button>
+                        <button id="btnRetake" class="btn btn-danger" disabled>Retake Last</button>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <h4 id="sampleCounter">Samples: 0/10</h4>
+                        <div id="thumbnailContainer" class="thumbnail-grid">
+                            <!-- Thumbnails will appear here -->
+                        </div>
+                    </div>
+
+                    <button id="btnComplete" class="btn btn-success" style="width: 100%; margin-top: 1.5rem;" disabled>Complete Registration</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="statusAlert" class="alert" style="display: none; margin-top: 1rem;"></div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/registration.js"></script>
+</body>
+</html>

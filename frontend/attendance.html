@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Attendance - Smart Attendance</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav">
+            <div class="nav-brand">
+                <span>🎓</span> Smart Attendance
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="registration.html">Registration</a>
+                <a href="attendance.html" style="color: var(--primary);">Attendance</a>
+                <a href="dashboard.html">Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Session Controls -->
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <div class="form-group" style="margin: 0;">
+                    <input type="text" id="courseName" class="form-input" placeholder="Course Name (e.g., CS101)">
+                </div>
+                <div class="form-group" style="margin: 0;">
+                    <input type="date" id="sessionDate" class="form-input">
+                </div>
+                <button id="btnStartSession" class="btn btn-primary">Start Session</button>
+                <button id="btnEndSession" class="btn btn-danger" style="display: none;">End Session</button>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <span id="sessionStatus" class="badge badge-error">Inactive</span>
+                <span id="sessionIdDisplay" style="color: var(--text-muted); font-size: 0.875rem;"></span>
+            </div>
+        </div>
+
+        <div class="grid grid-2">
+            <!-- Left: Webcam -->
+            <div class="card">
+                <h3>Camera Feed</h3>
+                <div class="webcam-container" style="margin-top: 1rem;">
+                    <video id="webcamVideo" autoplay playsinline></video>
+                </div>
+                <div style="display: flex; gap: 0.5rem; margin-top: 1rem; align-items: center;">
+                    <button id="btnStartCamera" class="btn btn-secondary">Start Camera</button>
+                    <button id="btnMarkAttendance" class="btn btn-primary" style="flex: 1;" disabled>Mark Attendance</button>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" id="autoCaptureToggle">
+                        <span>Auto-capture</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Right: Recognition Result -->
+            <div class="card">
+                <h3>Recognition Result</h3>
+                <div class="recognition-result">
+                    <div class="recognition-avatar" id="resultAvatar">👤</div>
+                    <h2 id="resultName">--</h2>
+                    <p id="resultId" style="color: var(--text-muted); margin-bottom: 1rem;">--</p>
+                    
+                    <div style="text-align: left; margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                            <span>Confidence</span>
+                            <span id="resultConfidenceText">0%</span>
+                        </div>
+                        <div class="confidence-bar">
+                            <div id="resultConfidenceBar" class="confidence-level" style="width: 0%; background-color: var(--error);"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <span id="resultStatus" class="badge" style="font-size: 1rem; padding: 0.5rem 1rem;">Awaiting Capture</span>
+                    </div>
+                    <div id="recognitionResult" class="alert" style="display: none; margin-top: 1rem;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attendance Table -->
+        <div class="card">
+            <h3>Session Attendance</h3>
+            <div class="table-container" style="margin-top: 1rem;">
+                <table class="table" id="attendanceTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Time</th>
+                            <th>Confidence</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceTableBody">
+                        <!-- Rows populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/attendance.js"></script>
+</body>
+</html>
